@@ -6,10 +6,10 @@ Setup
     - pip install chia-dev-tools
     - prepare a test net: chia configure -t true
 
-    syntax
-    brun
-    run
-    mod
+syntax
+brun
+run
+mod
 
     Address -> Puzzle hash
     https://chia.tt/convert
