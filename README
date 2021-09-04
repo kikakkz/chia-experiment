@@ -1,0 +1,47 @@
+Setup
+- Install python (3.8.10 for me)
+    - py -m venv venv
+    - . venv/Scripts/activate
+    - pip install wheel
+    - pip install chia-dev-tools
+    - prepare a test net: chia configure -t true
+
+    syntax
+    brun
+    run
+    mod
+
+    Address -> Puzzle hash
+    https://chia.tt/convert
+https://www.chiaexplorer.com/tools/address-puzzlehash-converter
+
+Compile
+cdv clsp build hellochia.clsp
+cdv clsp curry hellochia.clsp.hex
+cdv clsp curry hellochia.clsp.hex --treehash
+cdv encode $treehash --prefix txch
+cdv clsp curry hellochia.clsp.hex -x
+
+opc -H '(hello 0x5f5767744f91c1c326d927a63d9b34fa7035c10e3eb838c44e3afe127c1b7675 2)'
+
+chia wallet send -a 0 -t $txch --override // chia wallet must have balance
+cdv rpc coinrecords --by puzhash
+
+driver code: wrapper ability of coin, provide apis for upper layer
+driver code is used for application development (easy rpc, database access)
+
+    outer puzzle & inner puzzle & inner solution
+
+
+基础: chia安装，cdv安装，brun，run，puzzle，puzzle hash，账户
+v0: 一枚不能复制自身的硬币
+v1: 一枚可以复制自身的硬币
+v2: 一枚花费之后花费金额进入支付账户的硬币
+v3: 一枚花费之后支付金额进入可变目标账户，余额进入支付账户的硬币
+v4: 一枚花费之后支付金额进入指定目标账户，余额进入支付账户的硬币
+v5: 函数的第一次使用（v4的函数版本）
+v6: 错误的递归+inline
+v7: 正确的递归函数+错误的条件
+v8: 条件逻辑
+v9: 一枚可以接受多个目标账户，但是只能向第一个目标账户支付，余额进入支付账户的硬币（f指令的第一次使用）
+v10: 一枚只能向多个固定目标账户支付固定金额的硬币，余额当做矿工费（v9改进多个目标账户未果）
