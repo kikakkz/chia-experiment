@@ -1,5 +1,4 @@
 (mod (
-      pay_puzzle_hash
       my_puzzle_hash
       total_amount
      )
@@ -7,6 +6,6 @@
      (defconstant CREATE_COIN 51)
 
      (list
-      (list CREATE_COIN pay_puzzle_hash total_amount)
+      (list CREATE_COIN my_puzzle_hash total_amount)
      )
 )

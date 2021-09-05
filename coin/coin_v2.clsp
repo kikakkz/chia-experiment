@@ -2,14 +2,11 @@
       pay_puzzle_hash
       my_puzzle_hash
       total_amount
-      transfer_to_puzzle_hash
-      transfer_amount
      )
 
      (defconstant CREATE_COIN 51)
 
      (list
-      (list CREATE_COIN transfer_to_puzzle_hash transfer_amount)
-      (list CREATE_COIN pay_puzzle_hash (- total_amount transfer_amount))
+      (list CREATE_COIN pay_puzzle_hash total_amount)
      )
 )
