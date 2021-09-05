@@ -1,0 +1,26 @@
+(mod (
+      PAY_PUZZLE_HASH
+      TRANSFER_TO_PUZZLE_HASHES
+      my_puzzle_hash
+      total_amount
+      transfer_amount
+     )
+
+     (defconstant CREATE_COIN 51)
+
+     (defun do_transfer (transfer_to_puzzle_hash amount)
+      (list CREATE_COIN transfer_to_puzzle_hash amount)
+     )
+
+     (defun do_transfers (transfer_to_puzzle_hashes amount)
+      (if (l transfer_to_puzzle_hashes)
+       (c
+        (do_transfer (f transfer_to_puzzle_hashes) amount)
+        (do_transfers (r transfer_to_puzzle_hashes) amount)
+       )
+       ()
+      )
+     )
+
+     (do_transfers TRANSFER_TO_PUZZLE_HASHES transfer_amount)
+)

@@ -1,0 +1,15 @@
+(mod (
+      PAY_PUZZLE_HASH
+      TRANSFER_TO_PUZZLE_HASH
+      my_puzzle_hash
+      total_amount
+      transfer_amount
+     )
+
+     (defconstant CREATE_COIN 51)
+
+     (list
+      (list CREATE_COIN TRANSFER_TO_PUZZLE_HASH transfer_amount)
+      (list CREATE_COIN PAY_PUZZLE_HASH (- total_amount transfer_amount))
+     )
+)
